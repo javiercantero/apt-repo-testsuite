@@ -1,0 +1,142 @@
+#!/bin/sh
+#
+#   gentestpackage - generate a dummy test .deb package
+#   Copyright (C) 2015  Javier Cantero
+#
+#   This program is free software: you can redistribute it and/or modify
+#   it under the terms of the GNU General Public License as published by
+#   the Free Software Foundation, either version 3 of the License, or
+#   (at your option) any later version.
+#
+#   This program is distributed in the hope that it will be useful,
+#   but WITHOUT ANY WARRANTY; without even the implied warranty of
+#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#   GNU General Public License for more details.
+#
+#   You should have received a copy of the GNU General Public License
+#   along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+set -e
+
+# Parameter: test package name
+if [ "$1" = "" ]; then
+    echo "Usage: $0 <test package name>"
+    exit 0
+fi
+
+PACKAGENAME=$1
+PACKAGEDIR=$PACKAGENAME
+PACKAGEVERSION="1.0-1"
+MAINTAINER="User <user@localhost.localdomain>"
+
+DEBIANDIR="$PACKAGEDIR/debian"
+CURRENTDATE="$(date -R)"
+CURRENTYEAR=$(date +"%Y")
+
+echo "Creating $PACKAGEDIR"
+mkdir -p "$PACKAGEDIR"
+echo "Creating $DEBIANDIR"
+mkdir -p "$DEBIANDIR"
+mkdir -p "$DEBIANDIR/source"
+
+# package payload
+
+cat <<EOF > "$PACKAGEDIR/DISCLAIMER"
+This package is only intended for testing purposes. If you find it
+installed on your system, you should probably uninstall it.
+EOF
+
+# debhelper support files
+
+cat <<EOF > "$DEBIANDIR/compat"
+9
+EOF
+
+cat <<EOF > "$DEBIANDIR/source/format"
+3.0 (native)
+EOF
+
+# control file
+
+cat <<EOF > "$DEBIANDIR/control"
+Source: $PACKAGENAME
+Section: test
+Priority: extra
+Maintainer: $MAINTAINER
+Build-Depends: debhelper (>= 9)
+Standards-Version: 3.9.6
+EOF
+
+cat <<EOF >> "$DEBIANDIR/control"
+
+Package: $PACKAGENAME
+Architecture: all
+Depends: \${misc:Depends}
+Description: Test package. Please remove me.
+ This package is only a test package. You should remove it after its
+ usage.
+EOF
+
+# changelog file
+
+cat <<EOF > "$DEBIANDIR/changelog"
+$PACKAGENAME ($PACKAGEVERSION) unstable; urgency=low
+
+  * Initial Release.
+
+ -- $MAINTAINER  $CURRENTDATE
+EOF
+
+# copyright file
+
+cat <<EOF > "$DEBIANDIR/copyright"
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: $PACKAGENAME
+Source: <url://example.org>
+
+Files: *
+Copyright: $CURRENTYEAR $MAINTAINER
+License: GPL-3.0+
+
+Files: debian/*
+Copyright: $CURRENTYEAR $MAINTAINER
+License: GPL-3.0+
+
+License: GPL-3.0+
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+ .
+ This package is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License
+ along with this program. If not, see <https://www.gnu.org/licenses/>.
+ .
+ On Debian systems, the complete text of the GNU General
+ Public License version 3 can be found in "/usr/share/common-licenses/GPL-3".
+
+EOF
+
+# rules file
+
+cat <<EOF > "$DEBIANDIR/rules"
+#!/usr/bin/make -f
+
+%:
+	dh \$@
+
+EOF
+
+chmod +x "$DEBIANDIR/rules"
+
+# install docs (payload)
+
+cat <<EOF > "$DEBIANDIR/docs"
+DISCLAIMER
+EOF
+
+exit 0
