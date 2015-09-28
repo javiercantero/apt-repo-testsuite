@@ -1,0 +1,12 @@
+test-a (1.0-2) unstable; urgency=low
+
+  * Rename binary package from test-a to test-a-new. This is now a
+    transitional package.
+
+ -- User <user@localhost.localdomain>  Mon, 28 Sep 2015 17:00:03 +0200
+
+test-a (1.0-1) unstable; urgency=low
+
+  * Initial Release.
+
+ -- User <user@localhost.localdomain>  Mon, 28 Sep 2015 16:54:12 +0200

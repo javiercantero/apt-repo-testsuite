@@ -1,0 +1,15 @@
+Source: test-a-new
+Section: test
+Priority: extra
+Maintainer: User <user@localhost.localdomain>
+Build-Depends: debhelper (>= 9)
+Standards-Version: 3.9.6
+
+Package: test-a-new
+Architecture: all
+Depends: ${misc:Depends}, test-b, test-c, test-d
+Replaces: test-a (<< 1.0-2)
+Breaks: test-a (<< 1.0-2)
+Description: Test package. Please remove me.
+ This package is only a test package. You should remove it after its
+ usage.

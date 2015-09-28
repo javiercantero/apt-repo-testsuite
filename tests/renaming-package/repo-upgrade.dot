@@ -1,0 +1,25 @@
+digraph packages {
+concentrate=true;
+size="30,40";
+"test-a" [shape=box, color=red];
+"test-a-new" [shape=box];
+"test-b" [shape=box, style=filled, fillcolor=grey];
+"test-c" [shape=box, style=filled, fillcolor=grey];
+"test-d" [shape=box, style=filled, fillcolor=grey];
+"test-e" [shape=box, style=filled, fillcolor=grey];
+"test-f" [shape=box, style=filled, fillcolor=grey];
+"test-g" [shape=box, style=filled, fillcolor=grey];
+"test-h" [shape=box, style=filled, fillcolor=grey];
+"test-j" [shape=box, style=filled, fillcolor=grey];
+"test-z" [shape=box];
+"test-a" -> "test-a-new"[color=red];
+"test-a-new" -> "test-b";
+"test-a-new" -> "test-c";
+"test-a-new" -> "test-d";
+"test-b" -> "test-e";
+"test-b" -> "test-f";
+"test-c" -> "test-g";
+"test-g" -> "test-j";
+"test-d" -> "test-h";
+"test-z" -> "test-d";
+}
