@@ -1,0 +1,17 @@
+digraph packages {
+concentrate=true;
+size="30,40";
+"test-a" [shape=box];
+"test-b" [shape=box, style=filled, fillcolor=grey];
+"test-c" [shape=box, style=filled, fillcolor=grey];
+"test-d" [shape=box, style=filled, fillcolor=grey];
+"test-e" [shape=box, style=filled, fillcolor=grey];
+"test-z" [shape=box, color=red];
+"test-a" -> "test-b";
+"test-b" -> "test-c";
+"test-b" -> "test-d";
+"test-b" -> "test-z";
+"test-z" -> "test-b"[color=red];
+"test-z" -> "test-d";
+"test-z" -> "test-e";
+}
