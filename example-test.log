@@ -1,0 +1,187 @@
+$ cd debian-repo/; make init; cd ..
+reprepro -Vb . includedeb testsuite-repo debs-state-0/*.deb
+Created directory "./db"
+debs-state-0/test-a_1.0-1_all.deb: component guessed as 'main'
+Created directory "./pool"
+Created directory "./pool/main"
+Created directory "./pool/main/t"
+Created directory "./pool/main/t/test-a"
+debs-state-0/test-b_1.0-1_all.deb: component guessed as 'main'
+Created directory "./pool/main/t/test-b"
+debs-state-0/test-c_1.0-1_all.deb: component guessed as 'main'
+Created directory "./pool/main/t/test-c"
+debs-state-0/test-d_1.0-1_all.deb: component guessed as 'main'
+Created directory "./pool/main/t/test-d"
+debs-state-0/test-e_1.0-1_all.deb: component guessed as 'main'
+Created directory "./pool/main/t/test-e"
+debs-state-0/test-f_1.0-1_all.deb: component guessed as 'main'
+Created directory "./pool/main/t/test-f"
+debs-state-0/test-g_1.0-1_all.deb: component guessed as 'main'
+Created directory "./pool/main/t/test-g"
+debs-state-0/test-h_1.0-1_all.deb: component guessed as 'main'
+Created directory "./pool/main/t/test-h"
+debs-state-0/test-j_1.0-1_all.deb: component guessed as 'main'
+Created directory "./pool/main/t/test-j"
+debs-state-0/test-z_1.0-1_all.deb: component guessed as 'main'
+Created directory "./pool/main/t/test-z"
+Exporting indices...
+Created directory "./dists"
+Created directory "./dists/testsuite-repo"
+Created directory "./dists/testsuite-repo/main"
+Created directory "./dists/testsuite-repo/main/binary-i386"
+Created directory "./dists/testsuite-repo/main/binary-amd64"
+Successfully created './dists/testsuite-repo/Release.gpg.new'
+Successfully created './dists/testsuite-repo/InRelease.new'
+$ sudo aptitude update
+Get: 1 file:/path/to/debian-repo testsuite-repo InRelease [2593 B]
+Get: 2 file:/path/to/debian-repo testsuite-repo InRelease [2593 B]
+Get: 3 file:/path/to/debian-repo testsuite-repo/main amd64 Packages [1330 B]                                         
+Get: 4 file:/path/to/debian-repo testsuite-repo/main i386 Packages [1330 B]                         
+...
+                                         
+Current status: 107082 (-1) new.
+$ aptitude search "?section(test)"
+p   test-a                   <none>         - Test package. Please remove me.   
+p   test-b                   <none>         - Test package. Please remove me.   
+p   test-c                   <none>         - Test package. Please remove me.   
+p   test-d                   <none>         - Test package. Please remove me.   
+p   test-e                   <none>         - Test package. Please remove me.   
+p   test-f                   <none>         - Test package. Please remove me.   
+p   test-g                   <none>         - Test package. Please remove me.   
+p   test-h                   <none>         - Test package. Please remove me.   
+p   test-j                   <none>         - Test package. Please remove me.   
+p   test-z                   <none>         - Test package. Please remove me.   
+$ sudo aptitude install test-a test-z
+The following NEW packages will be installed:
+  test-a test-b{a} test-c{a} test-d{a} test-e{a} test-f{a} test-g{a} test-h{a} test-j{a} test-z 
+0 packages upgraded, 10 newly installed, 0 to remove and 0 not upgraded.
+Need to get 0 B/17.7 kB of archives. After unpacking 102 kB will be used.
+Do you want to continue? [Y/n/?] 
+Get: 1 file:/path/to/debian-repo testsuite-repo/main amd64 test-e all 1.0-1 [1764 B]
+Get: 2 file:/path/to/debian-repo testsuite-repo/main amd64 test-f all 1.0-1 [1766 B]
+Get: 3 file:/path/to/debian-repo testsuite-repo/main amd64 test-b all 1.0-1 [1780 B]
+Get: 4 file:/path/to/debian-repo testsuite-repo/main amd64 test-j all 1.0-1 [1766 B]
+Get: 5 file:/path/to/debian-repo testsuite-repo/main amd64 test-g all 1.0-1 [1776 B]
+Get: 6 file:/path/to/debian-repo testsuite-repo/main amd64 test-c all 1.0-1 [1778 B]
+Get: 7 file:/path/to/debian-repo testsuite-repo/main amd64 test-h all 1.0-1 [1768 B]
+Get: 8 file:/path/to/debian-repo testsuite-repo/main amd64 test-d all 1.0-1 [1776 B]
+Get: 9 file:/path/to/debian-repo testsuite-repo/main amd64 test-a all 1.0-1 [1784 B]
+Get: 10 file:/path/to/debian-repo testsuite-repo/main amd64 test-z all 1.0-1 [1780 B]
+100% [Working]Selecting previously unselected package test-e.
+(Reading database ... 136704 files and directories currently installed.)
+Preparing to unpack .../0-test-e_1.0-1_all.deb ...
+Unpacking test-e (1.0-1) ...
+Selecting previously unselected package test-f.
+Preparing to unpack .../1-test-f_1.0-1_all.deb ...
+Unpacking test-f (1.0-1) ...
+Selecting previously unselected package test-b.
+Preparing to unpack .../2-test-b_1.0-1_all.deb ...
+Unpacking test-b (1.0-1) ...
+Selecting previously unselected package test-j.
+Preparing to unpack .../3-test-j_1.0-1_all.deb ...
+Unpacking test-j (1.0-1) ...
+Selecting previously unselected package test-g.
+Preparing to unpack .../4-test-g_1.0-1_all.deb ...
+Unpacking test-g (1.0-1) ...
+Selecting previously unselected package test-c.
+Preparing to unpack .../5-test-c_1.0-1_all.deb ...
+Unpacking test-c (1.0-1) ...
+Selecting previously unselected package test-h.
+Preparing to unpack .../6-test-h_1.0-1_all.deb ...
+Unpacking test-h (1.0-1) ...
+Selecting previously unselected package test-d.
+Preparing to unpack .../7-test-d_1.0-1_all.deb ...
+Unpacking test-d (1.0-1) ...
+Selecting previously unselected package test-a.
+Preparing to unpack .../8-test-a_1.0-1_all.deb ...
+Unpacking test-a (1.0-1) ...
+Selecting previously unselected package test-z.
+Preparing to unpack .../9-test-z_1.0-1_all.deb ...
+Unpacking test-z (1.0-1) ...
+Setting up test-j (1.0-1) ...
+Setting up test-e (1.0-1) ...
+Setting up test-h (1.0-1) ...
+Setting up test-f (1.0-1) ...
+Setting up test-g (1.0-1) ...
+Setting up test-d (1.0-1) ...
+Setting up test-z (1.0-1) ...
+Setting up test-b (1.0-1) ...
+Setting up test-c (1.0-1) ...
+Setting up test-a (1.0-1) ...
+                                         
+$ aptitude search "?section(test)"
+i   test-a                   1.0-1          - Test package. Please remove me.   
+i A test-b                   1.0-1          - Test package. Please remove me.   
+i A test-c                   1.0-1          - Test package. Please remove me.   
+i A test-d                   1.0-1          - Test package. Please remove me.   
+i A test-e                   1.0-1          - Test package. Please remove me.   
+i A test-f                   1.0-1          - Test package. Please remove me.   
+i A test-g                   1.0-1          - Test package. Please remove me.   
+i A test-h                   1.0-1          - Test package. Please remove me.   
+i A test-j                   1.0-1          - Test package. Please remove me.   
+i   test-z                   1.0-1          - Test package. Please remove me.   
+$ cd debian-repo/; make state-1; cd ..
+reprepro -Vb . includedeb testsuite-repo debs-state-1/*.deb
+debs-state-1/test-a-new_1.0-1_all.deb: component guessed as 'main'
+Created directory "./pool/main/t/test-a-new"
+debs-state-1/test-a_1.0-2_all.deb: component guessed as 'main'
+Exporting indices...
+Successfully created './dists/testsuite-repo/Release.gpg.new'
+Successfully created './dists/testsuite-repo/InRelease.new'
+Deleting files no longer referenced...
+deleting and forgetting pool/main/t/test-a/test-a_1.0-1_all.deb
+$ sudo aptitude update
+Get: 1 file:/path/to/debian-repo testsuite-repo InRelease [2593 B]
+Get: 2 file:/path/to/debian-repo testsuite-repo InRelease [2593 B]
+Get: 3 file:/path/to/debian-repo testsuite-repo/main amd64 Packages [1476 B]                                                           
+Get: 4 file:/path/to/debian-repo testsuite-repo/main i386 Packages [1476 B]
+...
+                                         
+Current status: 1 (+1) upgradable, 17083 (+1) new.
+$ aptitude search "?section(test)"
+i   test-a                   1.0-1          - Test package. Please remove me.   
+p   test-a-new               <none>         - Test package. Please remove me.   
+i A test-b                   1.0-1          - Test package. Please remove me.   
+i A test-c                   1.0-1          - Test package. Please remove me.   
+i A test-d                   1.0-1          - Test package. Please remove me.   
+i A test-e                   1.0-1          - Test package. Please remove me.   
+i A test-f                   1.0-1          - Test package. Please remove me.   
+i A test-g                   1.0-1          - Test package. Please remove me.   
+i A test-h                   1.0-1          - Test package. Please remove me.   
+i A test-j                   1.0-1          - Test package. Please remove me.   
+i   test-z                   1.0-1          - Test package. Please remove me.   
+$ sudo aptitude upgrade
+Resolving dependencies...                
+The following NEW packages will be installed:
+  test-a-new{a} 
+The following packages will be upgraded:
+  test-a 
+1 packages upgraded, 1 newly installed, 0 to remove and 0 not upgraded.
+Need to get 0 B/3672 B of archives. After unpacking 10.2 kB will be used.
+Do you want to continue? [Y/n/?] 
+Get: 1 file:/path/to/debian-repo testsuite-repo/main amd64 test-a all 1.0-2 [1856 B]
+Get: 2 file:/path/to/debian-repo testsuite-repo/main amd64 test-a-new all 1.0-1 [1816 B]
+Reading changelogs... Donegelogs... 50%
+(Reading database ... 136744 files and directories currently installed.)
+Preparing to unpack .../0-test-a_1.0-2_all.deb ...
+Unpacking test-a (1.0-2) over (1.0-1) ...
+Selecting previously unselected package test-a-new.
+Preparing to unpack .../1-test-a-new_1.0-1_all.deb ...
+Unpacking test-a-new (1.0-1) ...
+Setting up test-a-new (1.0-1) ...
+Setting up test-a (1.0-2) ...
+                                         
+Current status: 0 (-1) upgradable.
+$ aptitude search "?section(test)"
+i   test-a                   1.0-2          - Test package. Please remove me.   
+i A test-a-new               1.0-1          - Test package. Please remove me.   
+i A test-b                   1.0-1          - Test package. Please remove me.   
+i A test-c                   1.0-1          - Test package. Please remove me.   
+i A test-d                   1.0-1          - Test package. Please remove me.   
+i A test-e                   1.0-1          - Test package. Please remove me.   
+i A test-f                   1.0-1          - Test package. Please remove me.   
+i A test-g                   1.0-1          - Test package. Please remove me.   
+i A test-h                   1.0-1          - Test package. Please remove me.   
+i A test-j                   1.0-1          - Test package. Please remove me.   
+i   test-z                   1.0-1          - Test package. Please remove me.   
+$
