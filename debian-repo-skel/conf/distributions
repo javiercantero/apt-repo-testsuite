@@ -1,0 +1,9 @@
+Origin: Debian
+Label: Debian-All
+Suite: testing
+Codename: testsuite-repo
+Version: 3.0
+Architectures: i386 amd64
+Components: main
+Description: testing repository
+#SignWith: 0x2EB164FBAB67A57F
